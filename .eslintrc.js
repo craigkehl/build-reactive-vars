@@ -1,6 +1,7 @@
 module.exports = {
-  extends: ["plugin:@trevorblades/react", "plugin:prettier/recommended"],
+  extends: ['plugin:@trevorblades/react', 'plugin:prettier/recommended'],
   rules: {
-    "react/prop-types": "off",
+    'react/prop-types': 'off',
+    'prettier/prettier': 'off',
   },
 };

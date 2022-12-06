@@ -1,5 +1,5 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
 
 export const GET_PASSENGERS = gql`
   query GetPassengers {
@@ -8,6 +8,7 @@ export const GET_PASSENGERS = gql`
         id
         image
         isSpaceshipPassenger @client
+        myVar @client
       }
     }
   }
@@ -29,7 +30,7 @@ export default function SpaceshipPassengers() {
   } = data;
 
   const passengers = results.filter(
-    (character) => character.isSpaceshipPassenger
+    character => character.isSpaceshipPassenger
   );
 
   if (!passengers.length) {
@@ -39,22 +40,25 @@ export default function SpaceshipPassengers() {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, 100px)",
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, 100px)',
         gap: 20,
       }}
     >
-      {passengers.map((passenger) => (
-        <img
-          key={passenger.id}
-          src={passenger.image}
-          alt={passenger.name}
-          style={{
-            width: "100%",
-            borderRadius: "50%",
-            border: "5px solid #318bbe",
-          }}
-        />
+      {passengers.map(passenger => (
+        <>
+          <img
+            key={passenger.id}
+            src={passenger.image}
+            alt={passenger.name}
+            style={{
+              width: '100%',
+              borderRadius: '50%',
+              border: '5px solid #318bbe',
+            }}
+          />
+          <p>{passenger.myVar}</p>
+        </>
       ))}
     </div>
   );
